@@ -16,13 +16,7 @@ class User extends Password {
       : super(password: user_password);
 
   Map<String, dynamic> toJson() {
-    return {
-      "id": id,
-      "name": name,
-      "age": age,
-      "height": height,
-      "password": password
-    };
+    return {"id": id, "name": name, "age": age, "height": height};
   }
 
   static User fromJson(Map<dynamic, dynamic> userJson) {
@@ -36,6 +30,7 @@ class User extends Password {
 
   @override
   String toString() {
-    return "User(id : $id ,name: $name, age: $age, height: $height, Password: ${super.isValid()})";
+    final pass = new Password(password: user_password);
+    return "User(id : $id ,name: $name, age: $age, height: $height, Password: ${pass.isValid()})";
   }
 }
