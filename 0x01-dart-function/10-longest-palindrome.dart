@@ -10,6 +10,7 @@ String longestPalindrome(String s) {
     if (isPalindrome(s[i + 3])) {
       return s[i + 3];
     }
+    i++;
     continue;
   }
 
