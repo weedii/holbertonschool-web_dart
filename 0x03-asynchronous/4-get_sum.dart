@@ -4,22 +4,22 @@ import 'dart:convert';
 Future<double> calculateTotal() async {
   try {
     String res = await fetchUserData();
-    var decodedUser = json.decode(res);
+    var decodedUser = jsonDecode(res);
     String userID = decodedUser["id"];
 
     String resOrders = await fetchUserOrders(userID);
-    List userOrders = json.decode(resOrders);
+    List userOrders = jsonDecode(resOrders);
 
-    double totalPrice = 0;
+    double totalPrice = 0.0;
 
     for (var product in userOrders) {
       String resPrice = await fetchProductPrice(product);
-      double productPrice = json.decode(resPrice);
+      double productPrice = jsonDecode(resPrice);
       totalPrice += productPrice;
     }
 
     return totalPrice;
-  } catch (err) {
+  } catch (e) {
     return -1;
   }
 }
